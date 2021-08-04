@@ -2,6 +2,10 @@
 
 ## codejam-chess:
 
+## Deploy: https://kaesid.github.io/chess/codejam-chess/dist/
+
+## Development logs:
+
 ### 17 июня:
 
 add: Реализована базовая верстка. Реализована шахматная доска на базовом уровне. Реализован таймер.
