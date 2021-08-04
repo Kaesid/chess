@@ -1,0 +1,244 @@
+@use '../utils'as *;
+
+.game {
+  &__timer {
+    font-size: 45px;
+    padding-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    height: 30px;
+    color: white;
+
+    &__count {
+      margin: 0;
+    }
+  }
+
+  &__field-wrap {
+    width: 100%;
+    gap: 40px;
+    padding: 30px 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    @include res(800px) {
+      flex-direction: column;
+    }
+  }
+
+  .active-player {
+    box-shadow: 0 0 10px 15px $activePlayerHighlight;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 30px;
+      min-height: 30px;
+      position: absolute;
+      top: 10%;
+      left: 20%;
+      background-image: url(../assets/icons/ok.png);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 1;
+    }
+  }
+
+  &__user-panel {
+    position: relative;
+    background: $userPanelBackground;
+    max-width: 400px;
+    max-height: 80vw;
+    width: 18vw;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 65vh;
+
+    &__header {
+      @include header;
+      text-align: center;
+      font-style: oblique;
+      margin-top: 10px;
+      max-width: 15vw;
+      word-wrap: break-word;
+    }
+
+    &__avatar-wrap {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    &__avatar {
+      width: 100%;
+      object-fit: contain;
+      height: 8vh;
+    }
+
+    &__article {
+      height: 45vh;
+      overflow: auto;
+      &__log {
+        @include buttonText;
+        margin: 0;
+        margin-bottom: 3px;
+        padding: 2px 5px;
+        border: 2px solid black;
+      }
+    }
+  }
+
+  .player {
+    order: 1;
+
+    @include res(800px) {
+      order: 2;
+      margin-bottom: 20px;
+    }
+  }
+
+  .opp {
+    order: 3;
+  }
+
+  &__field {
+    margin: 20px;
+    justify-self: center;
+    max-width: 570px;
+    max-height: 570px;
+    width: 50vw;
+    height: 50vw;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    perspective: 60rem;
+    box-shadow: 0 0 20px 11px black;
+    transform-style: preserve-3d;
+    transform-origin: center;
+    transition: all 1s;
+    order: 2;
+
+    @include res(800px) {
+      order: 1;
+    }
+
+    &__square {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border: black solid 2px;
+      box-sizing: border-box;
+
+      &::after {
+        @include datasetText;
+        content: attr(data-number);
+        top: 20%;
+        right: 130%;
+      }
+
+      &::before {
+        @include datasetText;
+        content: attr(data-letter);
+        top: 120%;
+        left: 30%;
+      }
+
+      &__piece {
+        position: absolute;
+        max-width: 100px;
+        width: 100%;
+        height: 100%;
+        max-height: 100px;
+        bottom: 0;
+        left: 0;
+        z-index: 5000;
+        cursor: pointer;
+      }
+    }
+
+    .white {
+      background: white;
+    }
+
+    .black {
+      background: rgb(71, 51, 51);
+    }
+
+    .square-wrap-move {
+      box-shadow: inset 0px 0px 20px 3px greenyellow;
+      opacity: 0.8;
+    }
+    .square-wrap-attack {
+      box-shadow: inset 0px 0px 15px 3px red;
+      opacity: 0.8;
+    }
+
+    .square-wrap-check-king {
+      box-shadow: inset 0px 0px 15px 3px mediumvioletred;
+      opacity: 0.8;
+    }
+
+    .square-wrap-check-attacker {
+      background-image: $gameCheckAttackerColor;
+      opacity: 0.8;
+    }
+
+    .square-wrap-checkmate-king {
+      box-shadow: inset 0px 0px 55px 3px red;
+      opacity: 0.8;
+    }
+
+    .square-wrap-checkmate-attacker {
+      box-shadow: inset 0px 0px 55px 3px yellow;
+      opacity: 0.8;
+    }
+
+    .square-wrap-stalemate-king {
+      box-shadow: inset 0px 0px 55px 3px $gameStalemateKingColor;
+      opacity: 0.8;
+    }
+
+    .square-wrap-advanvce-move {
+      background-image: $gameAdvanceMoveColor;
+      opacity: 0.7;
+    }
+  }
+
+  &__stop-button {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+}
+
+.numbers-left-visible {
+  &::after {
+    display: block;
+  }
+}
+
+.numbers-right-visible {
+  &::after {
+    display: block;
+    left: 130%;
+  }
+}
+
+.letters-bottom-visible {
+  &::before {
+    display: block;
+  }
+}
+
+.letters-top-visible {
+  &::before {
+    display: block;
+    top: max(-120%, -60px);
+  }
+}
+
+.change-turn {
+  transform: rotate(180deg);
+}

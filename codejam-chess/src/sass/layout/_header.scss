@@ -1,0 +1,69 @@
+@use '../utils'as *;
+
+.header {
+  background-image: $headerGradient;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  &__wrap {
+    @include flex(space-between);
+    height: 40px;
+    width: 100%;
+  }
+
+  &__replay {
+    &__speed-wrap {
+      order: -1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__speed-checkbox {
+      height: 20px;
+      width: 20px;
+    }
+
+    &__speed-label {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  &__nav {
+    padding-left: 20%;
+    padding-right: 20%;
+    width: 100%;
+
+    @include res(1200px) {
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+
+    &__list {
+      @include flex(space-between);
+
+      .link-active {
+        color: $linkActiveColor;
+        pointer-events: none;
+      }
+
+      &__item {
+        &__link {
+          @include header;
+
+          @include res(800px) {
+            font-size: 1em;
+          }
+
+          @include res(400px) {
+            font-size: 0.6rem;
+          }
+
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+}

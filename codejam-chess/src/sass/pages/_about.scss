@@ -1,0 +1,273 @@
+@use '../utils' as *;
+
+.about {
+  color: white;
+
+  &__server {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  &__loader-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: server;
+  }
+
+  &__new-game {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    grid-area: button;
+
+    &__server-button {
+      width: 20vw;
+    }
+  }
+
+  &__sample {
+    &__img {
+      width: 100%;
+    }
+  }
+
+  &__form {
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include res(1200px) {
+      display: block;
+    }
+
+    &__field {
+      width: 100%;
+      margin: 0 auto;
+
+      &__wrap {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &__buttons-wrap {
+        display: block;
+        height: 3.5vh;
+        margin: 0;
+      }
+
+      &__button-ok {
+        @include buttonText;
+        background: $okButtonGradient;
+        background-image: url(../assets/icons/ok.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: white;
+        width: 30px;
+        height: 30px;
+        box-shadow: 0 0 16px 3px $okButtonHighlight;
+        border-radius: 50%;
+
+        &:hover,
+        &:focus {
+          cursor: pointer;
+          opacity: 0.9;
+        }
+      }
+      &__label-wrap {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        @include res(1200px) {
+          display: block;
+        }
+      }
+
+      &__label {
+        width: 100%;
+        font-size: 20px;
+      }
+
+      &__error {
+        width: 100%;
+        @include flex(center);
+        flex-wrap: wrap;
+        text-align: center;
+        padding-left: 20px;
+        font-weight: 700;
+      }
+
+      &__input {
+        width: 60%;
+        height: 3vh;
+
+        @include res(1200px) {
+          width: 50%;
+        }
+      }
+    }
+
+    &__buttons-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 50px;
+      gap: 5vw;
+      @include res(1200px) {
+        margin-top: 20px;
+        justify-content: center;
+      }
+    }
+
+    &__submit {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__cancel {
+      background: $cancelButtonGradient;
+    }
+
+    &__email-exist {
+      margin-top: 40px;
+      color: red;
+      width: 50%;
+      text-align: center;
+    }
+  }
+
+  &__avatar {
+    padding-bottom: 20px;
+    height: 100%;
+    width: 100%;
+    max-height: 40vh;
+
+    @include res(1200px) {
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    &__header {
+      margin-top: 0;
+      @include header;
+      text-align: center;
+      color: white;
+    }
+    &__image {
+      margin: 0 auto;
+      max-width: 260px;
+      height: 260px;
+
+      &__canvas {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+
+      &__img {
+        display: none;
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+    &__button-container {
+      margin: 20px auto 0;
+      @include flex(space-between);
+      width: 300px;
+    }
+
+    &__apply-button {
+      .apply-label {
+        @include flex(center);
+        @include buttonText;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: inline-flex;
+        border-radius: 10px;
+        outline: 0;
+        padding: 0 10px;
+        background: $avatarUploadButtonGradient;
+        border: greenyellow solid 2px;
+        overflow: hidden;
+        transition: all 0.5s;
+
+        color: black;
+        height: 35px;
+        width: 150px;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      .apply-button {
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &__reset-button {
+      .reset-button {
+        @include buttonText;
+        background: $cancelButtonAvatarGradient;
+        color: white;
+        height: 35px;
+        width: 100px;
+        border-radius: 10px;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+.lds-hourglass {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-hourglass:after {
+  content: ' ';
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  box-sizing: border-box;
+  border: 32px solid white;
+  border-color: white transparent white transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}

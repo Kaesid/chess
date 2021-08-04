@@ -1,0 +1,109 @@
+@use '../utils' as *;
+
+.popup {
+  position: fixed;
+  background: $fallbackPopupColor;
+  background-image: url(../assets/images/popup-background.jpg);
+  background-size: cover;
+  font-weight: 500;
+  color: black;
+  top: 50%;
+  left: 50%;
+  --height-pop: 90vh;
+  height: var(--height-pop);
+  margin-top: calc(var(--height-pop) / -2);
+  --width-pop: 80vw;
+  width: var(--width-pop);
+  margin-left: calc(var(--width-pop) / -2);
+
+  @include res(1200px) {
+    --height-pop: 95vh;
+  }
+
+  &__header-container {
+    background: $headerPopupGradient;
+  }
+
+  &__header {
+    @include header;
+    color: black;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__form-wrapper {
+    padding: 30px;
+  }
+
+  &__form {
+    &__buttons-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 50px;
+      gap: 5vw;
+
+      @include res(1200px) {
+        margin-top: 20px;
+        justify-content: center;
+      }
+    }
+
+    &__submit {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__cancel {
+      background: $cancelButtonGradient;
+    }
+  }
+  &__stats {
+    width: 70%;
+    margin: 0 auto 50px;
+    text-align: center;
+
+    &__item {
+      @include buttonText;
+    }
+  }
+  &__nav-buttons {
+    &__header {
+      width: 80%;
+      text-align: center;
+      margin: 0 auto;
+      font-weight: 600;
+      font-size: 27px;
+      line-height: 37px;
+      margin-bottom: 50px;
+    }
+  }
+}
+
+.endgame-popup {
+  background: white;
+  background-image: url(../assets/images/endgame-popup.jpg);
+  --width-pop: 50vw;
+  width: var(--width-pop);
+  margin-left: calc(var(--width-pop) / -2);
+  --height-pop: 70vh;
+  height: var(--height-pop);
+  margin-top: calc(var(--height-pop) / -2);
+  min-width: 600px;
+  @include res(1400px) {
+    --width-pop: 80vw;
+  }
+
+  &__button-container {
+    justify-content: center;
+  }
+}
+
+.draw-offer {
+  padding-top: 50px;
+  --height-pop: 30vh;
+  height: var(--height-pop);
+  margin-top: calc(var(--height-pop) / -2);
+}

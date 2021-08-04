@@ -1,0 +1,18 @@
+@use '../utils' as *;
+
+.body {
+  position: relative;
+  background: $fallbackBackgroundColor;
+  background-image: url(../assets/images/page-background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: black;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27px;
+  font-size: 18px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}

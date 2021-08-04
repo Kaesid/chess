@@ -1,0 +1,52 @@
+@use '../utils/variables' as *;
+
+.working-zone {
+  max-width: $maxWidthWork;
+  margin: 0 auto;
+  padding: 0 5px;
+}
+
+.invisible {
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  border: 0;
+  padding: 0;
+  clip-path: insert(0px, 99.9%, 99.9%);
+  font-size: 0px;
+}
+
+.inactive {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.no-touch {
+  pointer-events: none;
+}
+
+.replay-mode {
+  pointer-events: none;
+}
+
+.hide {
+  display: none;
+}
+
+.modal-window-background {
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.animation {
+  transition: all 0.5s;
+  pointer-events: none;
+}
+
+.relocate-element {
+  order: -2;
+}
+
+.disable {
+  display: none;
+}

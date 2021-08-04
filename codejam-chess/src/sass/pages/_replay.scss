@@ -1,0 +1,117 @@
+@use '../utils' as *;
+
+.replays {
+  margin-top: 20px;
+  color: white;
+
+  &__header {
+    @include header2;
+    text-align: center;
+  }
+
+  &__replay-wrap {
+    width: 100%;
+  }
+
+  &__replay {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    margin: 0 auto 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: black;
+    border: black solid 2px;
+    border-radius: 25px;
+    grid-template-columns: 25vw 20vw 25vw;
+    grid-template-areas: '. stats .';
+    gap: 50px;
+    background-color: $backgroundReplay;
+
+    @include res(750px) {
+      display: block;
+    }
+
+    &__stats {
+      grid-area: stats;
+      color: $replayStatsColor;
+
+      &__item {
+        @include header;
+        text-align: center;
+      }
+    }
+
+    &__button-wrap {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+
+      @include res(750px) {
+        margin-top: 10px;
+      }
+    }
+
+    &__player-tab {
+      position: relative;
+      &__name {
+        @include header2;
+        text-align: center;
+        max-width: 300px;
+        word-wrap: break-word;
+        margin: 0 auto;
+      }
+
+      &__avatar-wrap {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        max-width: 200px;
+      }
+
+      &__avatar {
+        height: auto;
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .white {
+    color: white;
+  }
+
+  .black {
+    color: black;
+  }
+}
+
+.winner {
+  &::before {
+    content: '';
+    background-image: url(../assets/icons/winner.png);
+    position: absolute;
+    left: -50px;
+    top: -10px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.winner-game {
+  &::before {
+    left: 0;
+    top: 0;
+  }
+}
